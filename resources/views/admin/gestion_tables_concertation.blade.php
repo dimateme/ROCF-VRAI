@@ -22,29 +22,29 @@
 
                             </div>
 
-                            <h4 class="card-title mb-4">La liste des membres</h4>
+                            <h4 class="card-title mb-4">La liste des concertations</h4>
 
                             <div class="table-responsive">
                                 <table id="donneesDeLaTable" class="table table-centered mb-0 align-middle table-hover table-nowrap">
                                     <thead class="table-light">
                                     <tr>
                                         <th>Nom</th>
-                                        <th>Prenom</th>
-                                        <th>Telephone</th>
-                                        <th>Famille</th>
-                                        <th>Code postal</th>
-                                        <th style="width: 120px;">Courriel</th>
+                                        <th style="width: 120px;"></th>
                                     </tr>
                                     </thead><!-- end thead -->
                                     <tbody>
+                                    @foreach($lesConcertations as $uneConcertation)
                                         <tr>
-                                            <td><h6 class="mb-0"></h6></td>
-                                            <td><h6 class="mb-0"></h6></td>
-                                            <td><h6 class="mb-0"></h6></td>
-                                            <td><h6 class="mb-0"></h6></td>
-                                            <td><h6 class="mb-0"></h6></td>
-                                            <td><h6 class="mb-0"></h6></td>
+                                            <td><h6 class="mb-0">{{$uneConcertation->concertation}}</h6></td>
+
+                                             <td>
+                                                 <a href="#modifier{{$uneConcertation->id}}" data-bs-toggle="modal"  class="btn btn-warning">Modifier</a>
+                                                 <a href="#supprimer{{$uneConcertation->id}}" data-bs-toggle="modal" class="btn btn-danger">Supprimer</a>
+                                                 @include('admin/modifier_tables_concertation')
+                                                 @include('admin/supprimer_tables_concertation')
+                                             </td>
                                         </tr>
+                                    @endforeach
                                     </tbody><!-- end tbody -->
                                 </table> <!-- end table -->
                             </div>

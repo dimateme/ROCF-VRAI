@@ -31,7 +31,7 @@
                         <li>
                             <a href="javascript: void(0);" class="has-arrow">Partenaires</a>
                             <ul class="sub-menu" aria-expanded="true">
-                                <li><a href="{{route('partenaires')}}">Ajouter</a></li>
+                                <li><a href="{{route('admin.gestion.partenaires')}}">Gestion</a></li>
                             </ul>
                         </li>
                         <li>
@@ -43,7 +43,7 @@
                         <li>
                             <a href="javascript: void(0);" class="has-arrow">Direction</a>
                             <ul class="sub-menu" aria-expanded="true">
-                                <li><a href="layouts-horizontal.html">Ajouter</a></li>
+                                <li><a href="{{route('admin.gestion.directions')}}">Gestion</a></li>
                             </ul>
                         </li>
                     </ul>

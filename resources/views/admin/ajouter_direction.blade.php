@@ -6,22 +6,22 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 
             </div>
-            <form action="{{route('admin.ajouter.partenaires')}}" method="POST">
+            <form action="{{route('admin.ajouter.directions')}}" method="POST">
                 @csrf
                 <div class="modal-body">
 
                     <div class="form-group mb-3 row">
                         <div class="col-12">
                             <label for="partenaire"> Partenaire </label>
-                            {!! $errors->first('partenaire', '<small class="text-danger">:message</small>')!!}
+                            {!! $errors->first('direction', '<small class="text-danger">:message</small>')!!}
 
-                            <input class="form-control" type="text" name="partenaire" id="partenaire"   value="{{old('partenaire')}}">
+                            <input class="form-control" type="text" name="direction" id="direction"   value="{{old('direction')}}">
                         </div>
                     </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Quitter</button>
-                    <button type="submit" class="btn btn-primary">Ajouter</button>
-                </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Quitter</button>
+                        <button type="submit" class="btn btn-primary">Ajouter</button>
+                    </div>
             </form>
 
 

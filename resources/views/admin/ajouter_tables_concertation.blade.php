@@ -2,11 +2,11 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">INSCRIRE UN PARTENAIRE</h5>
+                <h5 class="modal-title" id="exampleModalLabel">INSCRIRE UNE CONCERTATION</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 
             </div>
-            <form action="{{url('ajouter_tables_concertation')}}" method="POST">
+            <form action="{{route('admin.ajouter.tables_concertation')}}" method="POST">
                 @csrf
                 <div class="modal-body">
 

@@ -6,7 +6,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 
             </div>
-            <form action="{{route('modifier_utilisateur',$unUtilisateur->id)}}" method="POST">
+            <form action="{{route('modifier.utilisateur',$unUtilisateur->id)}}" method="POST">
                 @csrf
                 <div class="modal-body">
 

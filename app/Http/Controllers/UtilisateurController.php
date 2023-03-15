@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Concertation;
+use App\Models\Partenaire;
 use Illuminate\Http\Request;
 use App\Models\Utilisateur;
 use App\Models\Role;
@@ -70,10 +72,10 @@ class UtilisateurController extends Controller
     }
 
 
-    public function admin_gestion_tables_concertation()
-    {
-        return view('admin.gestion_tables_concertation');
-    }
+//    public function admin_gestion_tables_concertation()
+//    {
+//        return view('admin.gestion_tables_concertation');
+//    }
 
     public function admin_gestion()
     {
@@ -164,16 +166,66 @@ class UtilisateurController extends Controller
         return redirect()->back();
     }
 
-    //edit user
-    /*public function admin_edit_utilisateurs(Request $request, $id)
+    // fonction qui permet d'afficher la page de gestion des partenaires
+    public function admin_gestion_partenaires()
     {
-        $unUtilisateur = Utilisateur::find($id);
+        $lesPartenaires = Partenaire::all();
+        return view('admin.gestion_partenaires')->with('lesPartenaires', $lesPartenaires);
+    }
+    // fonction qui permet d'ajouter un partenaire
+    function admin_ajouter_partenaires(){
+
+        $unPartenaire = new Partenaire();
+        $unPartenaire->partenaire = request('partenaire');
+        $unPartenaire->save();
+        return redirect()->back();
+    }
+    // fonction qui permet de modifier un partenaire
+    function admin_modifier_partenaires($id){
+
+        $unPartenaire = Partenaire::find($id);
+        $unPartenaire->partenaire = request('partenaire');
+        $unPartenaire->save();
+        return redirect()->back();
+    }
+    // fonction qui permet de supprimer un partenaire
+    function admin_supprimer_partenaires(){
+
+            $unPartenaire = Partenaire::find(request('id'));
+            $unPartenaire->delete();
+            return redirect()->back();
+    }
+    //fonction qui permet d'ajouter la table de concertation
+    function admin_ajouter_tables_concertation(){
+        $uneConcertation = new Concertation();
+        $uneConcertation->concertation = request('concertation');
+//        dd($uneConcertation);
+        $uneConcertation->save();
+        return redirect()->back();
+    }
+    //foncion qui permet d'afficher la table de concertation
+    function admin_gestion_tables_concertation(){
+        $lesConcertations = Concertation::all();
+        return view('admin.gestion_tables_concertation')->with('lesConcertations', $lesConcertations);
+    }
+    //fonction qui permet de modifier la table de concertation
+    function admin_modifier_tables_concertation($id){
+        $uneConcertation = Concertation::find($id);
+        $uneConcertation->concertation = request('concertation');
+        $uneConcertation->save();
+        return redirect()->back();
+    }
+    //fonction qui permet de supprimer la table de concertation
+    function admin_supprimer_tables_concertation(){
+        $uneConcertation = Concertation::find(request('id'));
+        $uneConcertation->delete();
+        return redirect()->back();
+    }
+    //fonction qui permet d'afficher la page de gestion des directions
+    function admin_gestion_directions(){
         $lesDirections = Direction::all();
-        //les roles
-        $lesRoles = Role::all();
-        $lesUtilisateurs = Utilisateur::with('direction')->get();
-        $directions = Direction::with('utilisateurs')->get();
-        return view('admin.edit_utilisateurs')->with('lesDirections', $lesDirections)->with('lesRoles', $lesRoles)
-            ->with('lesUtilisateurs', $lesUtilisateurs)->with('directions', $directions)->with('unUtilisateur', $unUtilisateur);
-    }*/
+        return view('admin.gestion_directions')->with('lesDirections', $lesDirections);
+    }
+
+
 }
