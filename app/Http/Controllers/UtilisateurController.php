@@ -173,7 +173,10 @@ class UtilisateurController extends Controller
         return view('admin.gestion_partenaires')->with('lesPartenaires', $lesPartenaires);
     }
     // fonction qui permet d'ajouter un partenaire
-    function admin_ajouter_partenaires(){
+    function admin_ajouter_partenaires(Request $request){
+        $request->validate([
+            'partenaire' => ['required', 'string', 'min:3', 'max:100' ],
+        ]);
 
         $unPartenaire = new Partenaire();
         $unPartenaire->partenaire = request('partenaire');
@@ -225,6 +228,28 @@ class UtilisateurController extends Controller
     function admin_gestion_directions(){
         $lesDirections = Direction::all();
         return view('admin.gestion_directions')->with('lesDirections', $lesDirections);
+    }
+    //fonction qui permet d'ajouter une direction
+    function admin_ajouter_directions(Request $request){
+
+        $request->validate([
+            'direction' => ['required', 'string', 'min:5', 'max:100' ],
+            'lien_site' => ['required', 'string',  'min:3', 'max:100'],
+            'courriel' => ['required', 'string',  'min:3', 'max:100'],
+            'telephone' => ['required', 'string',  'min:10', 'max:14'],
+            'adresse' => ['required', 'integer'],
+            'code_postal' => ['required', 'string',  'min:7', 'max:7'],
+        ]);
+        $uneDirection = new Direction();
+        $uneDirection->direction = request('direction');
+        $uneDirection->lien_site = request('lien_site');
+        $uneDirection->courriel = request('courriel');
+        $uneDirection->telephone = request('telephone');
+        $uneDirection->adresse = request('adresse');
+        $uneDirection->code_postal = request('code_postal');
+        dd($uneDirection);
+        $uneDirection->save();
+        return redirect()->back();
     }
 
 

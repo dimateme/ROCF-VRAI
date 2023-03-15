@@ -5,18 +5,7 @@
         <div class="page-content">
             <div class="row">
                 <div class="col-xl-12">
-                    @if ($errors->any())
-                        <div class="alert alert-danger">
-                            <strong>
-                                Oups. Nous n’avons pas pu enregistrer votre demande pour la raison suivante :
-                            </strong>
-                            <ul class="list-unstyled">
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    @endif
+
 
                     <!-- Button trigger modal -->
                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -68,7 +57,7 @@
                 </div>
 
             </div>
-            @include('admin.ajouter_partenaire')
+            @include('admin.ajouter_direction')
         </div>
 
     </div>
